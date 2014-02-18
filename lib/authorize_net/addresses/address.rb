@@ -5,14 +5,14 @@ module AuthorizeNet
     
     include AuthorizeNet::Model
     
-    attr_accessor :first_name, :last_name, :company, :street_address, :city, :state, :zip, :country, :phone, :fax, :customer_address_id
+    attr_accessor :address, :first_name, :last_name, :company, :street_address, :city, :state, :zip, :country, :phone, :fax, :customer_address_id
     
     def to_hash
       hash = {
         :first_name => @first_name,
         :last_name => @last_name,
         :company => @company,
-        :address => @street_address,
+        :address => !@street_address.nil? ? @street_address : @address,
         :city => @city,
         :state => @state,
         :zip => @zip,
